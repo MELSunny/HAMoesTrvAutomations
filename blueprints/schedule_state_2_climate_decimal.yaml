@@ -33,10 +33,11 @@ variables:
   schedule_state: !input schedule_state
   climate_names: !input climate_names
   target_decimal_offset: !input target_decimal_offset
-trigger:
-- platform: state
+triggers:
+- trigger: state
   entity_id: !input schedule_state
-action:
+  to:
+actions:
 - repeat:
     for_each: "{{ climate_names }}"
     sequence:
